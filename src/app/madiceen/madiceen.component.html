@@ -1,0 +1,100 @@
+<div class="box box-success">
+   <div class="box-header">
+      <i class="fa fa-cog"></i> เวชภัณฑ์
+   </div>
+   <div class="box-body">
+      <a class="btn btn-primary" (click)="mediceenAdd()" data-toggle="modal" data-target="#modalMadiceen">
+         <i class="fa fa-plus"></i> เพิ่มรายการ
+      </a>
+      <div>
+         <table class="table">
+            <thead>
+               <tr>
+                  <th class="text-center" width="100px">#</th>
+                  <th>รหัส</th>
+                  <th>ชื่อ</th>
+                  <th class="text-right">ราคาทุน</th>
+                  <th class="text-right">ราคาขาย</th>
+                  <th>หมายเหตุ</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr *ngFor='let item of madiceens'>
+                  <td class="text-center">
+                     <a class="btn btn-danger btn-sm" (click)="mediceenDelete(item)">
+                        <i class="fa fa-times"></i>
+                     </a>
+                     &nbsp;
+                     <a class="btn btn-primary btn-sm" (click)="mediceenInfo(item)" data-toggle="modal"
+                        data-target="#modalMadiceen">
+                        <i class="fa fa-pencil"></i>
+                     </a>
+                  </td>
+                  <td> {{ item.code }} </td>
+                  <td> {{ item.name }} </td>
+                  <td class="text-right"> {{ item.buy }} </td>
+                  <td class="text-right"> {{ item.sale }} </td>
+                  <td> {{ item.remark}} </td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+   </div>
+</div>
+
+<!--Dialog ขึ้นหน้าจอตอนเพิ่มข้อมูล-->
+<div class="modal fade" id="modalMadiceen" tabindex="-1" role="dialog">
+   <div class="modal-dialog" role="document">
+      <div class="modal-content">
+         <div class="modal-header bg-primary">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                  aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">
+               <i class="fa fa-pencil"></i> ข้อมูลเวชภัณฑ์
+            </h4>
+         </div>
+         <div class="modal-body">
+            <div class="row">
+               <div class="col-lg-3 col-md-3 col-sm-3">
+                  <div class="form-group">
+                     <label>รหัส</label>
+                     <input class="form-control" [(ngModel)]="madiceen.code" />
+                  </div>
+               </div>
+               <div class="col-lg-3 col-md-3 col-sm-3">
+                  <div class="form-group">
+                     <label>ชื่อ</label>
+                     <input type="text" class="form-control" [(ngModel)]="madiceen.name" />
+                  </div>
+               </div>
+               <div class="col-lg-3 col-md-3 col-sm-3">
+                  <div class="form-group">
+                     <label>ราคาทุน</label>
+                     <input type="text" class="form-control" [(ngModel)]="madiceen.buy" />
+                  </div>
+               </div>
+               <div class="col-lg-3 col-md-3 col-sm-3">
+                  <div class="form-group">
+                     <label>ราคาจำหน่าย</label>
+                     <input type="text" class="form-control" [(ngModel)]="madiceen.sale" />
+                  </div>
+               </div>
+               <div class="col-lg-12 col-md-12 col-sm-12">
+                  <div class="form-group">
+                     <label>หมายเหตุ</label>
+                     <input type="text" class="form-control" [(ngModel)]="madiceen.remark" />
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">
+               Close
+            </button>
+            <button type="button" class="btn btn-primary" (click)="save()" data-dismiss="modal">
+               <i class="fa fa-check"></i> บันทึก
+            </button>
+         </div>
+      </div><!-- /.modal-content -->
+   </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

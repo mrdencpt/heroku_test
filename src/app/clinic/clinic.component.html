@@ -1,0 +1,40 @@
+<div class="box box-primary">
+    <div class="box-header">
+        <i class="fa fa-file"></i>
+        ข้อมูลคลินิค
+    </div>
+    <div class="box-body">
+        <div class="row">
+            <div class="col-lg-4 col-md-4">
+                <div class="form-group">
+                    <label>ชื่อ</label>
+                    <input type="text" class="form-control" name="name" [(ngModel)]="name" />
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4">
+                <div class="form-group">
+                    <label>เบอร์โทร</label>
+                    <input type="text" class="form-control" name="tel" [(ngModel)]="tel" />
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4">
+                <div class="form-group">
+                    <label>เลขผู้เสียภาษี</label>
+                    <input type="text" class="form-control" name="tax" [(ngModel)]="tax" />
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12">
+                <div class="form-group">
+                    <label>ที่ตั้ง</label>
+                    <input type="text" class="form-control" name="address" [(ngModel)]="address" />
+                </div>
+            </div>
+        </div>
+        <div class="text-center">
+            <button class="btn btn-primary btn-md" (click)="save()">
+                <i class="fa fa-check"></i>
+                บันทึก
+            </button>
+        </div>
+    </div>
+</div>

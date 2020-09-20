@@ -1,0 +1,24 @@
+<mat-card>
+    <mat-card-title>
+        Login to MiniStock System
+    </mat-card-title>
+    <mat-card-content>
+        <mat-form-field>
+            <mat-label>Username/Email</mat-label>
+            <input [(ngModel)]="userData.username" matInput name="username" gnModel #username />
+            <mat-icon matSuffix>email</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Passwrod</mat-label>
+            <input [(ngModel)]="userData.password" type="password" matInput name="password" ngModel #password />
+            <mat-icon matSuffix>lock</mat-icon>
+        </mat-form-field>
+
+        <button mat-flat-button color="primary" (click)="checkLogin()">
+            <mat-icon>check</mat-icon>
+            Login
+        </button>
+
+    </mat-card-content>
+</mat-card>

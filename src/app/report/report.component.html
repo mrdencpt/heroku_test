@@ -1,0 +1,53 @@
+<div class="box box-success">
+   <div class="box-header">
+      <i class="fa fa-calendar"></i> รายงาน
+   </div>
+   <div class="box-body">
+      <div class="row">
+         <div class="col-lg-5 col-md-5 col-sm-5">
+            <div class="input-group">
+               <span class="input-group-addon">จากวันที่</span>
+               <input class="form-control" type="date" value="2020-09-10" [(ngModel)]="search.from" />
+            </div>
+         </div>
+         <div class="col-lg-5 col-md-5 col-sm-5">
+            <div class="input-group">
+               <span class="input-group-addon">ถึงวันที่</span>
+               <input class="form-control" type='date' [(ngModel)]="search.to" />
+            </div>
+         </div>
+         <div class="col-lg-2 col-md-2 col-sm2">
+            <a class="btn btn-primary" (click)="showReport()">
+               <i class="fa fa-check"></i> แสดง
+            </a>
+         </div>
+      </div>
+      <div style="padding-top: 6px;">
+         <table class="table table-bordered table-striped">
+            <thead>
+               <tr>
+                  <th width="130px">วันที่</th>
+                  <th width="150px">เจ้าของ</th>
+                  <th width="150px">สัตว์เลี้ยง</th>
+                  <th width="100px" class="text-right">ค่ารักษา</th>
+                  <th>อาการ</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr *ngFor="let item of repairs">
+                  <td>{{ item.created_at | date: 'dd/MM/yyyy HH:mm' }}</td>
+                  <td>{{ item.customer.name }}</td>
+                  <td>{{ item.pet.name }}</td>
+                  <td class="text-right">{{ item.price | number: '1.2-2' }}</td>
+                  <td>{{ item.problem }}</td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+      <div class="text-center">
+         <!-- <font size="4">ยอดขาย : <span class="text-danger">xxx.xx</span> บาท</font> -->
+         <p style="font-size: 22px;">ยอดขาย : <span class="text-danger">{{ totalPrice | number: '1.2-2' }}</span> บาท
+         </p>
+      </div>
+   </div>
+</div>
