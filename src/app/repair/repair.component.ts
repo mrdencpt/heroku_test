@@ -184,17 +184,20 @@ export class RepairComponent implements OnInit {
     Swal.fire({
       title: 'ยืนยัน ลบ !',
       text: 'คุณต้องการลบข้อมูล ใช่หรือไม่ ?',
-      icon: 'question',
-      showCloseButton: true,
+      icon: 'warning',
+
       showCancelButton: true,
-      //focusConfirm: false,
-      confirmButtonText: 'Yes',
-      cancelButtonText: 'No'
+      focusCancel: true,
+      confirmButtonText: 'ใช่',
+      cancelButtonText: 'ไม่ใช่'
+
     }).then((result) => {
-      this.http.post(this.shareService.serverPath + "/repairRemove", item).subscribe((res: any) => {
-        this.loadRepairOfPet()
-        //alert("ลบรายการแล้ว")
-      })
+      if (result.isConfirmed) {
+        this.http.post(this.shareService.serverPath + "/repairRemove", item).subscribe((res: any) => {
+          this.loadRepairOfPet()
+          alert("ลบรายการแล้ว")
+        })
+      }
     })
   }
   /**
